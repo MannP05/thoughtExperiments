@@ -20,6 +20,29 @@ public class CollatzConjecture {
         }
     }
 
+    public static int[] CollatzConjectureIterated(int userNum){
+        for (int i = 0; i <= userNum; i++) {
+            int count = 0;
+            int max = i;
+            int currentNum = i;
+            while (currentNum != 1 && currentNum != 0) {
+                if (currentNum > max) {
+                    max = currentNum;
+                }
+                if (currentNum % 2 == 0) {
+                    currentNum = currentNum / 2;
+                } else {
+                    currentNum = (3 * currentNum) + 1;
+                }
+                count++;
+            }
+            System.out.println("Starting number: " + i);
+            System.out.println("The number of steps to reach 1 is: " + count);
+            System.out.println("The highest number reached is: " + max);
+        }
+        return new int[]{0, 0}; // Placeholder return value
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a number: ");
@@ -28,5 +51,7 @@ public class CollatzConjecture {
         int[] result = CollatzConjecture(userNum, count, userNum);
         System.out.println("The number of steps to reach 1 is: " + result[0]);
         System.out.println("The highest number reached is: " + result[1]);
+
+        CollatzConjectureIterated(userNum);
     }
 }
